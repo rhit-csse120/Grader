@@ -1,7 +1,7 @@
 import importlib.util
 import os
 import sys
-from src.Repos import Repos
+from Repos import Repos
 
 
 class Tester:
@@ -10,18 +10,17 @@ class Tester:
         # self.solution_folder
 
     def run_tests_on_all_students(self):
-        if self.is_missing_prerequisites():
+        if not self.has_all_prerequistes():
             print("Missing prerequisites.  Nothing done.")
             return
         modules = self.get_modules()
 
         print("\nRunning tests on all students and all modules in")
         print(f"{self.repos.project} for {self.repos.term}")
+        self.repos.cd_to_repos_folder()
         for repo in self.repos.repos:
             print(f"\n{repo.real_name}:", end="")
-            if repo.is_not_started():
-                print(" has NOT CLONED the project")
-            else:
+            if repo.is_already_cloned():
                 print()
                 failed = 0
                 for module in modules:
@@ -34,9 +33,13 @@ class Tester:
                     print(f" FAILED 1 test")
                 else:
                     print(f" FAILED {failed} tests")
+            else:
+                print(" has NOT CLONED the project")
+        self.repos.cd_home()
 
     def get_modules(self):
-        return ["m4_calling_functions_returning_values"]  # Stub
+        # return ["m4_calling_functions_returning_values"]  # Stub
+        return ["m9_summary"]
 
     def run_tests_on_student(self, repo, module):
         code_to_test = self.get_code_to_test(repo, module)
@@ -44,8 +47,9 @@ class Tester:
         return testing_code.run_tests(code_to_test)
 
     def get_code_to_test(self, repo, module):
-        sys.path.insert(0, repo.source_folder)
-        f = importlib.import_module(repo.repo_relative + module)
+        sys.path.insert(0, repo.repo_source_folder)
+        f = importlib.import_module(
+            f"{repo.repo_name_for_importing}.{module}")
         sys.path.pop(0)
         return f
 
@@ -58,5 +62,5 @@ class Tester:
     def run_tests(self, module):
         return 0
 
-    def is_missing_prerequisites(self):
-        return False  # Stub
+    def has_all_prerequistes(self):
+        return True  # Stub

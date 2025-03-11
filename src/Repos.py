@@ -18,6 +18,7 @@ class Repos:
         self.organization = "https://github.com/rhit-csse120"
         self.url = f"{self.organization}/{self.project}-{self.term}"
 
+        self.repo_name_for_importing = f"repos-{self.term}.{self.project}"
         self.repo_names_file = f"../data/repo_usernames-{term}.txt"
         self.repos = self.make_repos()
 
