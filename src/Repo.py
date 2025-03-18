@@ -10,14 +10,12 @@ class Repo:
 
         self.repo_folder = f"{self.real_name}"
         self.repo_source_folder = f"{self.real_name}/src"
-        self.url = f"{self.parent.url}-{self.repo_username}"
+        if repo_username == "TESTER":
+            self.url = f"{self.parent.url_without_date}-{self.repo_username}"
+        else:
+            self.url = f"{self.parent.url}-{self.repo_username}"
         self.repo_name_for_importing = \
             f"{parent.repo_name_for_importing}.{self.real_name}.src"
-
-        # self.repo_relative = self.repo_folder.replace(
-        #     "../", "").replace(
-        #     "/", ".")
-        # print(self.repo_relative)
 
     def clone(self):
         print("\nCloning " + self.repo_username + " for " + self.real_name)
@@ -46,7 +44,7 @@ class Repo:
     def is_already_cloned(self):
         return os.path.isdir(self.repo_folder)
 
-    def number_of_commits(self):
+    def get_number_of_commits(self):
         if self.is_already_cloned():
             os.chdir(self.repo_folder)
             try:

@@ -17,6 +17,7 @@ class Repos:
 
         self.organization = "https://github.com/rhit-csse120"
         self.url = f"{self.organization}/{self.project}-{self.term}"
+        self.url_without_date = f"{self.organization}/{self.project}"
 
         self.repo_name_for_importing = f"repos-{self.term}.{self.project}"
         self.repo_names_file = f"../data/repo_usernames-{term}.txt"
@@ -68,15 +69,13 @@ class Repos:
         self.cd_to_repos_folder()
         for repo in self.repos:
             print("{:16} ".format(repo.real_name), end="")
+            number_of_commits = repo.get_number_of_commits()
             if repo.is_already_cloned():
-                print("{:2}".format(repo.number_of_commits()))
+                if number_of_commits == 0:
+                    print(" 0  NO COMMITS")
+                else:
+                    print("{:2}".format(number_of_commits))
             else:
                 print("Not yet cloned")
         self.cd_home()
 
-    # def get_cloned_repos(self):
-    #     cloned_repos = []
-    #     for repo in self.repos:
-    #         if not repo.is_not_started():
-    #             cloned_repos.append(repo)
-    #     return cloned_repos

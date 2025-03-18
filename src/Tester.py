@@ -1,13 +1,19 @@
 import importlib.util
-import os
 import sys
+import os
 from Repos import Repos
+from Repo import Repo
 
 
 class Tester:
     def __init__(self, project, term):
         self.repos = Repos(project, term)
-        # self.solution_folder
+        self.solution_username = "TESTER"
+        self.solution_realname = "TESTER"
+        self.solution_project = f"{project}-{self.solution_username}"
+        self.solution_repo = Repo(
+            self.solution_username, self.solution_realname, self.repos
+        )
 
     def run_tests_on_all_students(self):
         if not self.has_all_prerequistes():
@@ -17,6 +23,7 @@ class Tester:
 
         print("\nRunning tests on all students and all modules in")
         print(f"{self.repos.project} for {self.repos.term}")
+
         self.repos.cd_to_repos_folder()
         for repo in self.repos.repos:
             print(f"\n{repo.real_name}:", end="")
@@ -25,7 +32,9 @@ class Tester:
                 failed = 0
                 for module in modules:
                     print(f"  {module}: ", end="")
-                    failed += self.run_tests_on_student(repo, module)
+                    tests_failed = self.run_tests_on_student(repo, module)
+                    print(f"{tests_failed} failed tests")
+                    failed += tests_failed
                 print(f"  SUMMARY over all modules: ", end="")
                 if failed == 0:
                     print(" PASSED ALL TESTS")
@@ -38,29 +47,38 @@ class Tester:
         self.repos.cd_home()
 
     def get_modules(self):
-        # return ["m4_calling_functions_returning_values"]  # Stub
-        return ["m9_summary"]
+        return ["m4_calling_functions_returning_values"]
 
     def run_tests_on_student(self, repo, module):
-        code_to_test = self.get_code_to_test(repo, module)
-        testing_code = self.get_testing_code()
-        return testing_code.run_tests(code_to_test)
+        module_to_test = self.get_code_to_test(repo, module)
+        if not module_to_test:
+            return None
+        testing_module = self.get_testing_code(module)
+        return testing_module.run_tests(module_to_test)
 
     def get_code_to_test(self, repo, module):
         sys.path.insert(0, repo.repo_source_folder)
+        stdout = sys.stdout
+        stderr = sys.stderr
+        sys.stdout = open(os.devnull, "w")
+        sys.stderr = open(os.devnull, "w")
+        try:
+            f = importlib.import_module(f"{repo.repo_name_for_importing}.{module}")
+        except Exception as e:
+            print(e)
+            f = None
+        sys.stdout = stdout
+        sys.stderr = stderr
+        sys.path.pop(0)
+        return f
+
+    def get_testing_code(self, module):
+        sys.path.insert(0, self.solution_repo.repo_source_folder)
         f = importlib.import_module(
-            f"{repo.repo_name_for_importing}.{module}")
+            f"{self.solution_repo.repo_name_for_importing}.{module}"
+        )
         sys.path.pop(0)
         return f
-
-    def get_testing_code(self, repo, module):
-        sys.path.insert(0, repo.source_folder)
-        f = importlib.import_module(repo.repo_relative + module)
-        sys.path.pop(0)
-        return f
-
-    def run_tests(self, module):
-        return 0
 
     def has_all_prerequistes(self):
         return True  # Stub
