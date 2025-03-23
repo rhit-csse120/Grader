@@ -3,14 +3,9 @@ rhit-ayubi      Irfan_Ayub
 rhit-blocksl    Lindsey_Blocksom
 rhit-crewsdo    Dallan_Crews
 rhit-doylejd    Josh_Doyle
-       rhit-gurrolee   Ella_Gurrola
-Y-Hato          Yuna_Hattori
-Tokurin         Rin_Imai
+rhit-gurrolee   Ella_Gurrola
 rhit-kedzioct   Chase_Kedizior
-kuritaYurhit    Yuki_Kurita
 rhit-mannani    Isha_Mannan
-niwatori222     Rentaro_Shiratori
-motohisa1342    Motohisa_Yamano
 Stew1sh         Jason_Zheng
 rhit-zhu2       Anya_Zhu
 rhit-baekji     Jason_Baek
