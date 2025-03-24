@@ -3,7 +3,7 @@ rhit-ayubi      Irfan_Ayub
 rhit-blocksl    Lindsey_Blocksom
 rhit-crewsdo    Dallan_Crews
 rhit-doylejd    Josh_Doyle
-rhit-gurrolee   Ella_Gurrola
+ellagurrola     Ella_Gurrola
 rhit-kedzioct   Chase_Kedizior
 rhit-mannani    Isha_Mannan
 Stew1sh         Jason_Zheng
