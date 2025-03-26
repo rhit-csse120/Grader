@@ -7,7 +7,13 @@ term = "202530"
 
 # project = "01-Introduction_to_Python_and_PyCharm"
 # project = "02-Objects_Functions_and_Methods"
-project = "03-Loops_Summing_and_Unit_Testing"
+# project = "03-Loops_Summing_and_Unit_Testing"
+# project = "04-Conditionals_and_The_Accumulator_Pattern"
+# project = "05a-Debugging"
+# project = "05b-Exam1_Practice"
+# project = "07-Sequences"
+# project = "08-Exam1"
+# project = "09-Patterns_For_Sequences"
 
 
 def main():
