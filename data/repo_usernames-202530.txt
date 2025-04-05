@@ -8,6 +8,7 @@ rhit-kedzioct   Chase_Kedizior
 Stew1sh         Jason_Zheng
 rhit-zhu2       Anya_Zhu
 rhit-baekji     Jason_Baek
+rhit-BAEKJ2     Kevin_Baek
 rhit-behrinje   Jack_Behringer
 rhit-bharamr1   Ritu_Bharamaraddi
 rhit-brownzm    Zofia_Brown
