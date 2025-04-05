@@ -3,19 +3,20 @@ import subprocess
 
 
 class Repo:
-    def __init__(self, repo_username, real_name, parent):
+    def __init__(self, repo_username, real_name, parent, no_term=False):
         self.repo_username = repo_username
         self.real_name = real_name
         self.parent = parent
 
         self.repo_folder = f"{self.real_name}"
         self.repo_source_folder = f"{self.real_name}/src"
-        if repo_username == "TESTER":
-            self.url = f"{self.parent.url_without_date}-{self.repo_username}"
+        if no_term or repo_username == "TESTER":
+            self.url = f"{self.parent.url_without_term}-{self.repo_username}"
         else:
             self.url = f"{self.parent.url}-{self.repo_username}"
-        self.repo_name_for_importing = \
+        self.repo_name_for_importing = (
             f"{parent.repo_name_for_importing}.{self.real_name}.src"
+        )
 
     def clone(self):
         print("\nCloning " + self.repo_username + " for " + self.real_name)

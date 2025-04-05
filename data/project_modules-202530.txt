@@ -1,0 +1,33 @@
+01-Introduction_to_Python_and_PyCharm
+  m9_summary
+02-Objects_Functions_and_Methods
+  m4_functions
+  m5_practice_fixing_errors
+  m6_functions_vs_methods
+  m7_why_parameters_are_important
+  m8_summary
+03-Loops_Summing_and_Unit_Testing
+  m4_calling_functions_returning_values
+  m7_summing
+  m8_using_objects
+  m9a_loops_and_objects
+  m9b_summing_again
+04-Conditionals_and_The_Accumulator_Pattern
+  m2_summing_and_counting
+  m3_graphical_accumulating
+  m4_more_summing_and_counting
+  m5_more_graphical_accumulators
+05a-Debugging
+  m1
+  m2
+  m3
+05b-Exam1_Practice
+  problem0
+  problem1
+  problem2
+  problem3
+  problem4
+  problem5
+  problem6
+
+
