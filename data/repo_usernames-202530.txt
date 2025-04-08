@@ -16,7 +16,6 @@ rhit-darinimc   Lena_Darini
 rhit-finneysl   Sam_Finney
 rhit-hernanim   Illiana_Hernandez
 rhit-jiangc1    Chengyue_Jiang
-rhit-kramere    Ev_Kramer
 rhit-kratzema   Moses_Kratzer
 rhit-kubera     Richard_Kube
 rhit-mccarref   Evie_McCarroll

@@ -13,10 +13,10 @@ NO_TERM = False
 # project = "05a-Debugging"
 # project = "05b-Exam1_Practice"
 # project = "07-Sequences"
-# project = "09-Patterns_For_Sequences"
-# NO_TERM = True
+project = "09-Patterns_For_Sequences"
+NO_TERM = True
 # project = "10-Patterns_For_Sequences_Revisited"
-project = "12-Exam2_Practice"
+# project = "12-Exam2_Practice"
 
 
 def main(no_term=NO_TERM):
