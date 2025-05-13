@@ -9,11 +9,11 @@ class Repos:
         self.term = term
 
         self.repos_root = f"../repos-{self.term}"
-        self.repos_folder = f"{self.repos_root}/{self.project}"
+        self.project_folder = f"{self.repos_root}/{self.project}"
         if not os.path.isdir(self.repos_root):
             os.makedirs(self.repos_root)
-        if not os.path.isdir(self.repos_folder):
-            os.makedirs(self.repos_folder)
+        if not os.path.isdir(self.project_folder):
+            os.makedirs(self.project_folder)
 
         self.organization = "https://github.com/rhit-csse120"
         self.url = f"{self.organization}/{self.project}-{self.term}"
@@ -35,30 +35,30 @@ class Repos:
             repos.append(repo)
         return repos
 
-    def cd_to_repos_folder(self):
+    def cd_to_project_folder(self):
         self.home = os.getcwd()
-        os.chdir(self.repos_folder)
+        os.chdir(self.project_folder)
 
     def cd_home(self):
         os.chdir(self.home)
 
     def clone_repos(self):
         print(f"\nCloning student repos for {self.project}-{self.term}:")
-        self.cd_to_repos_folder()
+        self.cd_to_project_folder()
         for repo in self.repos:
             repo.clone()
         self.cd_home()
 
     def pull_repos(self):
         print(f"\nPulling student repos for {self.project}-{self.term}:")
-        self.cd_to_repos_folder()
+        self.cd_to_project_folder()
         for repo in self.repos:
             repo.pull()
         self.cd_home()
 
     def clone_or_pull_repos(self):
         print(f"\nCloning/pulling student repos for {self.project}-{self.term}:")
-        self.cd_to_repos_folder()
+        self.cd_to_project_folder()
         for repo in self.repos:
             if not repo.is_already_cloned():
                 repo.clone()
@@ -68,7 +68,7 @@ class Repos:
 
     def show_not_started_repos(self):
         print(f"\nStudents who have not started {self.project}-{self.term}:")
-        self.cd_to_repos_folder()
+        self.cd_to_project_folder()
         for repo in self.repos:
             if not repo.is_already_cloned():
                 print(repo.real_name)
@@ -76,7 +76,7 @@ class Repos:
 
     def show_number_of_commits(self):
         print(f"\nNumber of commits by student of {self.project}-{self.term}:")
-        self.cd_to_repos_folder()
+        self.cd_to_project_folder()
         for repo in self.repos:
             print("{:16} ".format(repo.real_name), end="")
             number_of_commits = repo.get_number_of_commits()
